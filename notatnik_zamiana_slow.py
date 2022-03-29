@@ -1,4 +1,6 @@
-﻿FILE_NAME = 'test'
+﻿#mateusz zmuda
+
+FILE_NAME = 'test'
 old_word = 'topowym'
 new_word = 'testowym'
 
