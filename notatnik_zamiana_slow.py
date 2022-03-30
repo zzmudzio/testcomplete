@@ -5,9 +5,9 @@ old_word = 'topowym'
 new_word = 'testowym'
 
 def start_restore_app():
-  #start if if it's not already started
+  #start if it's not already started
   if Sys.WaitProcess("notepad", 500).Exists:
-    Log.Message('There was an instance of notepad, not starting a new process')
+    Log.Message('There was an instance of notepad, new process will not be launched')
     handler = Sys.Process("notepad")
     return handler
   else:
@@ -35,9 +35,9 @@ def find_and_replace_text(wh, app_):
     save_file()
 
 def save_file():
-    Sys.Process("notepad").Form('*'+FILE_NAME + ' — Notatnik').MenuBar("Aplikacja").MenuItem("Plik").Click()
-    Sys.Process("notepad").Popup("Plik").MenuItem("Zapisz\tCtrl+S").Click()
-    Sys.Process("notepad").Close()
+    start_restore_app().Form('*'+FILE_NAME + ' — Notatnik').MenuBar("Aplikacja").MenuItem("Plik").Click()
+    start_restore_app().Popup("Plik").MenuItem("Zapisz\tCtrl+S").Click()
+    start_restore_app().Close()
     check_files()
     
 def check_files():
