@@ -1,3 +1,10 @@
+"""
+this testcomplete script works on windows calculator, 
+it takes 2 numbers from values_to_compute dict, then performs 
+some random computations (such as multiplication, division etc.)
+the result of computation shown on calc board is then compared with 
+result calculated by the script(aqObject.CheckProperty..)
+"""
 import random 
 
 def start_app():
