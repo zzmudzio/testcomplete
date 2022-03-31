@@ -1,4 +1,12 @@
-﻿#mateusz zmuda
+﻿"""
+this script file starts an notepad app, then looks for a word (i.e. old_word) in given text file (FILE_NAME) and 
+if it exists, it's replaced by a new_word
+after replacing the contents of file with replaced word/s is compared with a template file 
+if they are the same, script succeeds, otherwise fails, which is logged by Log.Message methods
+"""
+
+
+#mateusz zmuda
 
 FILE_NAME = 'test'
 old_word = 'topowym'
