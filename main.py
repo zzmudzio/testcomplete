@@ -12,7 +12,7 @@ def draw_menu():
     print("MENU: ")
     print(f'Wybierz opcje 1 lub 2(wybranie innej spowoduje odswiezenie menu)')
     print('\033[92m 1. Przeniesienie do kosza logow testcomplete ze wszystkich aplikacji \n 2. Przeniesienie do kosza logow testcomplete ze wskazanej aplikacji \033[0m \n Wybor: ', end="")
-
+    return 0 
 
 def get_menu_decision():
     try:
@@ -71,3 +71,5 @@ if __name__ == "__main__":
         remove_logs(log_paths, all=True)
     elif choice == 2:
         remove_logs(log_paths, all=False, indicated_apps=get_app_names(log_paths))
+else: 
+    print('Skrypt musi zostac uruchomiony samodzielnie, nie jako wywolanie z innego modulu!')
