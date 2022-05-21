@@ -35,6 +35,7 @@ def remove_logs(path_dict, all=False, indicated_apps=None):
                 for directory in directories: 
                     print(f'Przenosze do kosza nastepujace katalogi z aplikacji {app_name}: {os.path.join(root, directory)}')
                     send2trash.send2trash(os.path.join(root, directory))
+    return "success"
 
 
 def get_app_names(path_dict):
@@ -46,8 +47,8 @@ def get_app_names(path_dict):
     apps = input('Wybor: ')
     separated_list_of_apps = [app.strip().replace(' ', '') for app in apps.split(',')]
     apps_to_remove = remove_absent_apps(path_dict, separated_list_of_apps)
-    remove_logs(path_dict, all=False, indicated_apps=apps_to_remove)
-
+    return apps_to_remove
+    
 
 def remove_absent_apps(path_dict, separated_list_of_apps):
     apps_list = list(path_dict.keys())
@@ -60,8 +61,8 @@ def remove_absent_apps(path_dict, separated_list_of_apps):
 
 
 if __name__ == "__main__":
-    log_paths = {'wgos1':'C:\\Users\\m.zmuda-trzebia\\Desktop\\Testowy katalog\\test2_Log',
-                'wgos2':'C:\\Users\\m.zmuda-trzebia\\Desktop\\Testowy katalog\\test1_Log'}
+    log_paths = {'wgos1':'C:\\Users\\m.zmuda-trzebia\\Desktop\\Testowy katalog\\test1_Log',
+                'wgos2':'C:\\Users\\m.zmuda-trzebia\\Desktop\\Testowy katalog\\test2_Log'}
     choice = 0 
     while choice not in (1, 2):
         draw_menu()
@@ -69,4 +70,4 @@ if __name__ == "__main__":
     if choice == 1: 
         remove_logs(log_paths, all=True)
     elif choice == 2:
-        get_app_names(log_paths)
+        remove_logs(log_paths, all=False, indicated_apps=get_app_names(log_paths))
