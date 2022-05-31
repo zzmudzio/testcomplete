@@ -1,0 +1,23 @@
+# ==== Removing only directories from given paths =====
+# ==== Mateusz Zmuda ====
+
+# Below are stored paths to the TestComplete logs
+# The 'Log' folder stores also files but they are omitted during the process of removing 
+
+$paths_to_logs = "C:\Users\testcomplete\Desktop\test", 
+				 "C:\Users\testcomplete\Desktop\test2"
+
+$shell = New-Object -ComObject 'Shell.Application'
+
+foreach ($log_path in $paths_to_logs)
+{
+	$Files = @(Get-ChildItem -Path $log_path | where {$_.PSIsContainer -eq 'true'}) #PSIsContainer == Directory 
+	foreach ($element in $Files)
+		{
+			Write-Host 'Moving to recycle bin:' $element
+			$shell.NameSpace(0).ParseName($element.FullName).InvokeVerb('delete')
+		}
+}
+
+
+
